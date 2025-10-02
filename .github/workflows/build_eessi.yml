@@ -27,6 +27,6 @@ jobs:
         module load fiat/1.6.1-GCC-13.2.0
 
         cmake -B ${{github.workspace}}/build 
-        cmake --build 
+        cmake --build ${{github.workspace}}/build 
         cd  ${{github.workspace}}/build
         ctest
