@@ -15,8 +15,9 @@ jobs:
         module load EESSI-extend
         eb --robot ${{github.workspace}}/fiat-1.6.1-GCC-13.2.0.eb
 
-    - name: Load environment
+    - name: Build + test
       run: |
+        module load buildenv/default-foss-2023b
         module load CMake/3.27.6-GCCcore-13.2.0
         module load ecBuild/3.8.0
         module load gompi/2023b
@@ -24,16 +25,8 @@ jobs:
         module load ScaLAPACK/2.2.0-gompi-2023b-fb 
         module load EESSI-extend
         module load fiat/1.6.1-GCC-13.2.0
-        
-        module list
 
-    - name: Configure ectrans
-      run: cmake -B ${{github.workspace}}/build 
-
-    - name: Build ectrans
-      run: cmake --build ${{github.workspace}}/build 
-
-    - name: Run tests
-      working-directory: ${{github.workspace}}/build
-
-      run: ctest
+        cmake -B ${{github.workspace}}/build 
+        cmake --build 
+        cd  ${{github.workspace}}/build
+        ctest
