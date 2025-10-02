@@ -27,8 +27,11 @@ jobs:
         
         module list
 
+    - name: Configure ectrans
+      run: cmake -B ${{github.workspace}}/build 
+
     - name: Build ectrans
-      run: cmake -B ${{github.workspace}}/build --build
+      run: cmake --build ${{github.workspace}}/build 
 
     - name: Run tests
       working-directory: ${{github.workspace}}/build
