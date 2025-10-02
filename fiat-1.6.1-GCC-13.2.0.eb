@@ -1,0 +1,24 @@
+easyblock = 'CMakeMake'
+
+name = 'fiat'
+version = '1.6.1'
+
+homepage = ''
+description = ''
+
+toolchain = {'name': 'GCC', 'version': '13.2.0'}
+
+source_urls = ['https://github.com/ecmwf-ifs/fiat/archive/refs/tags/']
+sources = ['1.6.1.tar.gz']
+
+builddependencies = [
+        ('CMake', '3.27.6'),
+        ('ecBuild', '3.8.0', '', SYSTEM)
+]
+
+sanity_check_paths = {
+    'files': [],
+    'dirs': ['bin', 'include'],
+}
+
+moduleclass = 'tools'
