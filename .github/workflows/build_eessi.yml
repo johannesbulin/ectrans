@@ -10,10 +10,9 @@ jobs:
     - uses: eessi/github-action-eessi@v3
 
     - name: Build fiat
-      working-directory: ${{github.workspace}}
       run: |
         module load EESSI-extend
-        eb --robot fiat-1.6.1-GCC-13.2.0.eb
+        eb --robot ${{github.workspace}}/fiat-1.6.1-GCC-13.2.0.eb
 
     - name: Load environment
       run: |
